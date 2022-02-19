@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.SslErrorHandler;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             swipeRefreshLayout.setRefreshing(true);
-            new Handler().postDelayed(() -> {
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 swipeRefreshLayout.setRefreshing(false);
                 webView.reload();
             },  3000);
