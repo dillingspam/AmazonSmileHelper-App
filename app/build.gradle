@@ -1,10 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/home/rad/package-lock.json')
+            storePassword '123264'
+            keyAlias 'key0'
+            keyPassword '123264'
+        }
+    }
     compileSdk 31
     defaultConfig {
         applicationId "com.gitds.amazonsmilehelper"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -14,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
